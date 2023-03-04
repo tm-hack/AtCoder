@@ -3,28 +3,26 @@
 #include <algorithm>
 #include <atcoder/all>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-int N, A, B;
+string S;
 
 int main() {
     // 入力
-    cin >> N >> A >> B;
+    cin >> S;
 
-    // 全探索
-    int Answer = 0;
-    for (int i = 1; i <= N; i++) {
-        int digit_sum = 0;
-        string str = to_string(i);
-        for (int j = 0; j < str.size(); j++) {
-            digit_sum += str.at(j) - '0';
-        }
+    // 判定
+    int N = S.length();
+    string Answer = "Yes";
+    if (S != string(S.rbegin(), S.rend())) Answer = "No";
 
-        if (digit_sum >= A && digit_sum <= B) {
-            Answer += i;
-        }
-    }
+    string substr1 = S.substr(0, (N - 1) / 2);
+    if (substr1 != string(substr1.rbegin(), substr1.rend())) Answer = "No";
+
+    string substr2 = S.substr((N + 3) / 2 - 1);
+    if (substr2 != string(substr2.rbegin(), substr2.rend())) Answer = "No";
 
     // 出力
     cout << Answer << endl;
