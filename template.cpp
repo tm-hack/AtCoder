@@ -1,11 +1,9 @@
-#include <math.h>
+#include <bits/stdc++.h>
 
-#include <algorithm>
 #include <atcoder/all>
-#include <iostream>
-#include <vector>
 
 using namespace std;
+using namespace atcoder;
 
 int N;
 vector<int> A;
