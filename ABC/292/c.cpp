@@ -1,12 +1,9 @@
+#include <bits/stdc++.h>
 
-#include <math.h>
-
-#include <algorithm>
 #include <atcoder/all>
-#include <iostream>
-#include <vector>
 
 using namespace std;
+using namespace atcoder;
 
 long N;
 long memo[2'00'009];
