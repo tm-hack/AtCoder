@@ -20,6 +20,6 @@ int main() {
     sort(score, score + MAX_N, greater<pair<int, int>>());
 
     // 出力
-    cout << "Good Luck!" << endl;
+    cout << score[1].second << endl;
     return 0;
 }
