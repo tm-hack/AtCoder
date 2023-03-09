@@ -62,7 +62,8 @@ int main() {
             if (i >= 1) {
                 cout << " ";
             }
-            cout << Answer[i];
+
+                        cout << Answer[i];
         }
         cout << endl;
     }
