@@ -5,8 +5,6 @@
 using namespace std;
 using namespace atcoder;
 
-#define MAX_N 200'009
-
 int N, M;
 
 int main() {
