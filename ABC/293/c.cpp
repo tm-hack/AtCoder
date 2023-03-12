@@ -18,10 +18,10 @@ int main() {
     int moves[20], l = H + W - 2;
     int Answer = 0;
     for (int i = 1; i <= l; i++) {
-        if (i > W - 1) {
-            moves[i] = 1;
-        } else {
+        if (i <= W - 1) {
             moves[i] = 0;
+        } else {
+            moves[i] = 1;
         }
     }
 
