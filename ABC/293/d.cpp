@@ -12,15 +12,27 @@ int N, M;
 int main() {
     // 入力
     cin >> N >> M;
-    vector<int> tye[MAX_N];
 
-    for (int i = 1; i <= M; i++) {
-        cin >> score[i].first;
-        score[i].second = i;
+    vector<int> u(M), v(M);
+    for (int i = 0; i < M; i++) {
+        string a, b;
+        cin >> u[i] >> a >> v[i] >> b;
+        u[i]--;
+        v[i]--;
     }
-    sort(score, score + MAX_N, greater<pair<int, int>>());
+
+    // グラフ生成
+    dsu ufd(N);
+
+    // 計算
+    int Answer_1 = 0;
+    for (int i = 0; i < M; i++) {
+        if (ufd.leader(u[i]) == ufd.leader(v[i])) Answer_1++;
+        ufd.merge(u[i], v[i]);
+    }
+    int Answer_2 = ufd.groups().size() - Answer_1;
 
     // 出力
-    cout << "Good Luck!" << endl;
+    cout << Answer_1 << " " << Answer_2 << endl;
     return 0;
 }
