@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 )
@@ -10,6 +11,7 @@ var sc = bufio.NewScanner(os.Stdin)
 var wtr = bufio.NewWriter(os.Stdout)
 
 func main() {
+	defer flush()
 
 }
 
@@ -32,6 +34,17 @@ func nextInt() int {
 func nextString() string {
 	sc.Scan()
 	return sc.Text()
+}
+
+func out(v ...interface{}) {
+	fmt.Fprintln(wtr, v...)
+}
+
+func flush() {
+	e := wtr.Flush()
+	if e != nil {
+		panic(e)
+	}
 }
 
 // ==================================================
