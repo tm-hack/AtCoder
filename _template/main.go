@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"cmp"
 	"fmt"
 	"os"
 	"strconv"
@@ -61,4 +62,23 @@ func matrix2D(h, w, val int) [][]int {
 		}
 	}
 	return res
+}
+
+// ==================================================
+// dp
+// ==================================================
+func chmin[T cmp.Ordered](a *T, b T) bool {
+	if *a > b {
+		*a = b
+		return true
+	}
+	return false
+}
+
+func chmax[T cmp.Ordered](a *T, b T) bool {
+	if *a < b {
+		*a = b
+		return true
+	}
+	return false
 }
