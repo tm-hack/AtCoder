@@ -51,14 +51,12 @@ func flush() {
 // ==================================================
 // matrix
 // ==================================================
-func matrix2D(h, w, val int) [][]int {
-	res := make([][]int, h)
+func matrix2D[T any](h int, w int, val T) [][]T {
+	res := make([][]T, h)
 	for i := 0; i < h; i++ {
-		res[i] = make([]int, w)
-		if val != 0 {
-			for j := 0; j < w; j++ {
-				res[i][j] = val
-			}
+		res[i] = make([]T, w)
+		for j := 0; j < w; j++ {
+			res[i][j] = val
 		}
 	}
 	return res
