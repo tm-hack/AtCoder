@@ -80,3 +80,22 @@ func chmax[T cmp.Ordered](a *T, b T) bool {
 	}
 	return false
 }
+
+// ==================================================
+// binary_search
+// ==================================================
+func binary_search[T cmp.Ordered](key T, a []T) int {
+	left := 0
+	right := len(a) - 1
+	if right >= left {
+		mid := left + (right-left)/2
+		if a[mid] == key {
+			return mid
+		} else if a[mid] > key {
+			right = mid - 1
+		} else if a[mid] < key {
+			left = mid + 1
+		}
+	}
+	return -1
+}
