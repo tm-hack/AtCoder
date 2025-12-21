@@ -24,6 +24,16 @@ func init() {
 }
 
 // ==================================================
+// num
+// ==================================================
+func abs(a int) int {
+	if a > 0 {
+		return a
+	}
+	return -a
+}
+
+// ==================================================
 // io
 // ==================================================
 func nextInt() int {
@@ -82,20 +92,44 @@ func chmax[T cmp.Ordered](a *T, b T) bool {
 }
 
 // ==================================================
-// binary_search
+// binarySearch
 // ==================================================
-func binary_search[T cmp.Ordered](key T, a []T) int {
-	left := 0
-	right := len(a) - 1
-	if right >= left {
-		mid := left + (right-left)/2
-		if a[mid] == key {
-			return mid
-		} else if a[mid] > key {
-			right = mid - 1
-		} else if a[mid] < key {
-			left = mid + 1
+func binarySearch(ok, ng int, f func(int) bool) int {
+	if !f(ok) {
+		return -1
+	}
+	if f(ng) {
+		return ng
+	}
+	for abs(ok-ng) > 1 {
+		mid := (ok + ng) / 2
+
+		if f(mid) {
+			ok = mid
+		} else {
+			ng = mid
 		}
 	}
-	return -1
+
+	return ok
+}
+
+func lowerBound(v int, sl []int) int {
+	if len(sl) == 0 {
+		return -1
+	}
+	idx := binarySearch(0, len(sl)-1, func(c int) bool {
+		return sl[c] <= v
+	})
+	return idx
+}
+
+func upperBound(v int, sl []int) int {
+	if len(sl) == 0 {
+		return 0
+	}
+	idx := binarySearch(0, len(sl)-1, func(c int) bool {
+		return sl[c] <= v
+	})
+	return idx + 1
 }
