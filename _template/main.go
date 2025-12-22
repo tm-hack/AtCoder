@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 )
 
 var sc = bufio.NewScanner(os.Stdin)
@@ -33,6 +34,11 @@ func abs(a int) int {
 	return -a
 }
 
+func mod(a int, b int) int {
+	ans := (a%b + b) % b
+	return ans
+}
+
 // ==================================================
 // io
 // ==================================================
@@ -47,8 +53,20 @@ func nextString() string {
 	return sc.Text()
 }
 
+func itoa(i int) string {
+	return strconv.Itoa(i)
+}
+
 func out(v ...interface{}) {
 	fmt.Fprintln(wtr, v...)
+}
+
+func outis(sl []int) {
+	r := make([]string, len(sl))
+	for i, v := range sl {
+		r[i] = itoa(v)
+	}
+	out(strings.Join(r, " "))
 }
 
 func flush() {
