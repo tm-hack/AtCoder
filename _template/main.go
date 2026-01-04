@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"cmp"
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -37,6 +38,10 @@ func abs(a int) int {
 func mod(a int, b int) int {
 	ans := (a%b + b) % b
 	return ans
+}
+
+func pow(a, b int) int {
+	return int(math.Pow(float64(a), float64(b)))
 }
 
 // ==================================================
