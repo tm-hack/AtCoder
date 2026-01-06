@@ -44,6 +44,19 @@ func pow(a, b int) int {
 	return int(math.Pow(float64(a), float64(b)))
 }
 
+func sqrt(a int) int {
+	if a < 0 {
+		return -1
+	}
+
+	res := int(math.Sqrt(float64(a)))
+	if res*res == a {
+		return res
+	}
+
+	return -1
+}
+
 // ==================================================
 // io
 // ==================================================
@@ -66,7 +79,7 @@ func out(v ...interface{}) {
 	fmt.Fprintln(wtr, v...)
 }
 
-func outis(sl []int) {
+func outlist(sl []int) {
 	r := make([]string, len(sl))
 	for i, v := range sl {
 		r[i] = itoa(v)
