@@ -17,9 +17,6 @@ func main() {
 	defer flush()
 	N := nextInt()
 	c := make([]int, N+1)
-	for i := 0; i < N+1; i++ {
-		c[i] = 0
-	}
 
 	limit_x, _ := sqrt(N)
 	limit_y, _ := sqrt(N)
