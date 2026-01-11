@@ -13,30 +13,41 @@ import (
 var sc = bufio.NewScanner(os.Stdin)
 var wtr = bufio.NewWriter(os.Stdout)
 
-const INF = 100_000_000_000_000
-
 func main() {
 	defer flush()
 	T := nextInt()
-	N := make([]int, T)
-	W := make([]int, T)
-	C := matrix2D(T, 2*pow(10, 5), 0)
 
 	for i := 0; i < T; i++ {
-		N[i] = nextInt()
-		W[i] = nextInt()
-		for j := 0; j < N[i]; i++ {
-			C[i][j] = nextInt()
+		// 入力
+		N := nextInt()
+		W := nextInt()
+		C := make([]int, N)
+
+		for i := 0; i < N; i++ {
+			C[i] = nextInt()
 		}
-	}
 
-	for i := 0; i < T; i++ {
-		ans := INF
-		for j := 0; j < N[i]; j++ {
-
+		// コストをまとめ上げる
+		SC := make([]int, W*2)
+		for i := 0; i < N; i++ {
+			SC[i%(W*2)] = SC[i%(W*2)] + C[i]
 		}
-	}
 
+		// 尺取法
+		tmp := 0
+		for i := 0; i < W; i++ {
+			tmp += SC[i]
+		}
+		min := tmp
+
+		for i := 1; i < W*2; i++ {
+			tmp = tmp - SC[i-1] + SC[(i+W-1)%(W*2)]
+			chmin(&min, tmp)
+		}
+
+		// 出力
+		out(min)
+	}
 }
 
 // ==================================================
