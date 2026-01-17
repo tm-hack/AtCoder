@@ -15,15 +15,35 @@ var wtr = bufio.NewWriter(os.Stdout)
 
 func main() {
 	defer flush()
-	P := nextInt()
+	_ = nextInt()
+	_ = nextInt()
+	S := nextString()
+	T := nextString()
 	Q := nextInt()
-	X := nextInt()
-	Y := nextInt()
 
-	if P <= X && X < P+100 && Q <= Y && Y < Q+100 {
-		out("Yes")
-	} else {
-		out("No")
+	for i := 0; i < Q; i++ {
+		W := nextString()
+		w := strings.Split(W, "")
+		flag_takahashi := true
+		flag_aoki := true
+
+		for j := 0; j < len(w); j++ {
+			if !strings.Contains(S, w[j]) {
+				flag_takahashi = false
+			}
+
+			if !strings.Contains(T, w[j]) {
+				flag_aoki = false
+			}
+		}
+
+		if flag_takahashi && !flag_aoki {
+			out("Takahashi")
+		} else if !flag_takahashi && flag_aoki {
+			out("Aoki")
+		} else {
+			out("Unknown")
+		}
 	}
 
 }
